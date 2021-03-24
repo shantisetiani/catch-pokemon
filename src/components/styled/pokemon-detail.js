@@ -3,10 +3,59 @@ import styled from "@emotion/styled"
 const totalFontSize = '18px'
 const black = '#000000'
 const red = '#e21212'
+const borderColor = '#dbe0e4'
+
+
+export const PokemonImageSection = styled.span`
+    display: block;
+    text-align: center;
+`;
+
+export const PokemonImage = styled.img`
+    width: 100%;
+    max-width: 300px;
+`;
+
+export const DetailContent = styled.section`
+    padding: 25px 30px 30px;
+    border-bottom: 1px solid ${borderColor};
+`;
+
+export const DetailListItem = styled.span`
+    display: list-item;
+    list-style-type: disc;
+    list-style-position: inside;
+    text-transform: capitalize;
+`;
+
+export const ButtonContainer = styled.div`
+    position: fixed;
+    bottom: 0;
+    background-color: #FFF;
+    width: 100%;
+    box-shadow: 0 0 5px 1px #8a8a8a;
+    padding: 20px 10px;
+
+    @media (min-width: 925px) {
+        width: 30%;
+        right: 15px;
+        bottom: 15%;
+    }
+
+    button {
+        width: 100%;
+        height: 40px;
+        border-radius: 20px;
+    }
+`;
 
 export const TotalSection = styled.div`
     width: 100%;
     color: ${black};
+
+    @media (min-width: 925px) {
+        margin-bottom: 30px;
+    }
 `;
 
 export const TotalLabel = styled.div`

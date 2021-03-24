@@ -12,6 +12,11 @@ import NoImage from '../../assets/pokemon/no-image.jpg'
 import Break from '../../components/break'
 import { LinkText } from '../../components/styled/general'
 import {
+    PokemonImageSection,
+    PokemonImage,
+    DetailContent,
+    DetailListItem,
+    ButtonContainer,
     TotalSection,
     TotalLabel,
     TotalValue,
@@ -137,22 +142,21 @@ function PokemonDetail() {
     }
     
     const NoImageComponent = () => (
-        <img
+        <PokemonImage
             src={NoImage}
             alt="not-found"
-            className="pokemon-img"
         />
     )
 
     const ButtonSection = () => (
-        <Row className="button-section">
+        <ButtonContainer>
             <TotalSection>
                 <TotalLabel>Total Owned</TotalLabel>
                 <TotalValue>{state.totalOwned[data?.name] ? state.totalOwned[data.name] : 0}</TotalValue>
             </TotalSection>
             <Break height={10} />
             <Button type="primary" onClick={catchPokemon}>Catch Pokemon!</Button>
-        </Row>
+        </ButtonContainer>
     )
 
     // Loading animation
@@ -175,18 +179,17 @@ function PokemonDetail() {
             </Breadcrumb>
             <Row gutter={0}>
                 <Col xs={{ span: 24 }}>
-                    <section className="detail-content border-bottom-default">
+                    <DetailContent>
                         <Row gutter={0}>
                             <Col xs={{ span: 24 }} md={{ span: 12 }}>
-                                <span className="pokemon-img-section">
+                                <PokemonImageSection>
                                     { data.sprites && data.sprites.front_default ?
-                                        <img
+                                        <PokemonImage
                                             src={data.sprites.front_default}
                                             alt="pokemon-front"
-                                            className="pokemon-img"
                                         />
                                     : <NoImageComponent /> }
-                                </span>
+                                </PokemonImageSection>
                             </Col>
                             <Col xs={{ span: 24 }} md={{ span: 12 }} style={{ marginTop: "20px" }}> 
                                 <LabelValue lable="Pokemon Name" value={ data.name ? data.name : "-" } />
@@ -194,21 +197,21 @@ function PokemonDetail() {
                                 <LabelValue lable="Weight" value={ data.weight ? `${data.weight} gram` : "-" } />
                             </Col>
                         </Row>
-                    </section>
+                    </DetailContent>
                 </Col>
             </Row>
             <Row gutter={0}>
                 <Col xs={{ span: 24 }} md={{ span: 12 }} className="border-right-default">
-                    <section className="detail-content border-bottom-default">
+                    <DetailContent>
                         <Row gutter={0}>
-                            <h2 className="detail-title">Moves</h2>
+                            <h2><strong>Moves</strong></h2>
                         </Row>
                         <Row gutter={0}>
                             {data.moves ?
                                 data.moves.map(function(item){
                                     return(
-                                        <Col xs={{ span: 12 }} className="detail-list">
-                                            <span>{item.move.name}</span>
+                                        <Col xs={{ span: 12 }}>
+                                            <DetailListItem>{item.move.name}</DetailListItem>
                                         </Col>
                                     )
                                 })
@@ -216,19 +219,19 @@ function PokemonDetail() {
                                 ""
                             }
                         </Row>
-                    </section>
+                    </DetailContent>
                 </Col>
                 <Col xs={{ span: 24 }} md={{ span: 12 }} className="border-right-default">
-                    <section className="detail-content border-bottom-default">
+                    <DetailContent>
                         <Row gutter={0}>
-                            <h2 className="detail-title">Types</h2>
+                            <h2><strong>Types</strong></h2>
                         </Row>
                         <Row gutter={0}>
                             {data.types ?
                                 data.types.map(function(item, index){
                                     return(
-                                        <Col xs={{ span: 24 }} className="detail-list">
-                                            <span>{item.type.name} (slot: {item.slot})</span>
+                                        <Col xs={{ span: 24 }}>
+                                            <DetailListItem>{item.type.name} (slot: {item.slot})</DetailListItem>
                                         </Col>
                                     )
                                 })
@@ -236,7 +239,7 @@ function PokemonDetail() {
                                 ""
                             }
                         </Row>
-                    </section>
+                    </DetailContent>
                 </Col>
             </Row>
             <Break height={50} />
