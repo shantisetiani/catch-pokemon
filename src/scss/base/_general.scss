@@ -1,0 +1,61 @@
+.ant-breadcrumb {
+  padding: 12px 30px;
+  box-shadow: 0px 5px 8px $shadow-color;
+}
+
+.border-bottom-default {
+  border-bottom: 1px solid $border-color;
+}
+
+.border-right-default {
+  border-right: 1px solid $border-color;
+}
+
+a {
+  &:hover,
+  &:focus {
+    color: $color-primary !important;
+  }
+}
+
+.ant-btn {
+  border-radius: 4px;
+
+  &:hover, &:active, &:focus {
+    border: 1px solid $color-primary;
+    background: $color-white;
+    color: $color-primary;
+  }
+
+  &.ant-btn-primary {
+    border: 1px solid $color-white;
+    background: $color-primary;
+    color: $color-white;
+
+    &:hover, &:active, &:focus {
+      border: 1px solid $color-white;
+      background: $color-primary-dark;
+      color: $color-white;
+    }
+  }
+
+  &.btn-disabled {
+      opacity: 0.5;
+  }
+}
+
+.loading {
+  .loading-img {
+    width: 100%;
+  }
+}
+
+.modal-header {text-transform: capitalize;}
+
+@media(min-width: 769px)  {
+  .loading {
+    .loading-img {
+      padding: 0 12%;
+    }
+  }
+}
