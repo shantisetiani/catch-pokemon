@@ -1,0 +1,28 @@
+{
+  "files": {
+    "main.css": "/catch-pokemon/static/css/main.03d0a456.chunk.css",
+    "main.js": "/catch-pokemon/static/js/main.57f92841.chunk.js",
+    "main.js.map": "/catch-pokemon/static/js/main.57f92841.chunk.js.map",
+    "runtime-main.js": "/catch-pokemon/static/js/runtime-main.5d6e5c93.js",
+    "runtime-main.js.map": "/catch-pokemon/static/js/runtime-main.5d6e5c93.js.map",
+    "static/css/2.03d7f783.chunk.css": "/catch-pokemon/static/css/2.03d7f783.chunk.css",
+    "static/js/2.fdb90f42.chunk.js": "/catch-pokemon/static/js/2.fdb90f42.chunk.js",
+    "static/js/2.fdb90f42.chunk.js.map": "/catch-pokemon/static/js/2.fdb90f42.chunk.js.map",
+    "index.html": "/catch-pokemon/index.html",
+    "precache-manifest.c6346b94bac029bf4f33e1546dd1cc28.js": "/catch-pokemon/precache-manifest.c6346b94bac029bf4f33e1546dd1cc28.js",
+    "service-worker.js": "/catch-pokemon/service-worker.js",
+    "static/css/2.03d7f783.chunk.css.map": "/catch-pokemon/static/css/2.03d7f783.chunk.css.map",
+    "static/css/main.03d0a456.chunk.css.map": "/catch-pokemon/static/css/main.03d0a456.chunk.css.map",
+    "static/js/2.fdb90f42.chunk.js.LICENSE.txt": "/catch-pokemon/static/js/2.fdb90f42.chunk.js.LICENSE.txt",
+    "static/media/no-image.jpg": "/catch-pokemon/static/media/no-image.085f0984.jpg",
+    "static/media/pokeball.gif": "/catch-pokemon/static/media/pokeball.bc656300.gif",
+    "static/media/pokemon-logo.png": "/catch-pokemon/static/media/pokemon-logo.023d617a.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.5d6e5c93.js",
+    "static/css/2.03d7f783.chunk.css",
+    "static/js/2.fdb90f42.chunk.js",
+    "static/css/main.03d0a456.chunk.css",
+    "static/js/main.57f92841.chunk.js"
+  ]
+}
