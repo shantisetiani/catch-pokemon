@@ -210,9 +210,9 @@ function PokemonDetail() {
                         </Row>
                         <Row gutter={0}>
                             {data.moves ?
-                                data.moves.map(function(item){
+                                data.moves.map(function(item, index){
                                     return(
-                                        <Col xs={{ span: 12 }}>
+                                        <Col xs={{ span: 12 }} key={index}>
                                             <DetailListItem>{item.move.name}</DetailListItem>
                                         </Col>
                                     )
@@ -232,8 +232,8 @@ function PokemonDetail() {
                             {data.types ?
                                 data.types.map(function(item, index){
                                     return(
-                                        <Col xs={{ span: 24 }}>
-                                            <DetailListItem>{item.type.name} (slot: {item.slot})</DetailListItem>
+                                        <Col xs={{ span: 24 }} key={index}>
+                                            <DetailListItem>{item.type.name}</DetailListItem>
                                         </Col>
                                     )
                                 })

@@ -94,7 +94,7 @@ function PokemonList(props) {
 
     return (
         <div className="pokemon-list">
-            {pokemonList && <Table dataSource={pokemonList} columns={columns()} pagination={false}  loading={loading} />}
+            {pokemonList && <Table dataSource={pokemonList} rowKey={(record) => record.name} columns={columns()} pagination={false}  loading={loading} />}
             <TablePagination totalData={data.count} page={page} goTo={goTo} />
         </div>
     )
