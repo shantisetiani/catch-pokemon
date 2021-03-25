@@ -242,7 +242,6 @@ function PokemonDetail() {
                     </DetailContent>
                 </Col>
             </Row>
-            <Break height={50} />
             <ButtonSection />
             <Modal
                 visible={modalVisible}

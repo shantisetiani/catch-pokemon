@@ -1,5 +1,5 @@
-import React, {useState} from 'react';
-import { HashRouter, Route, Switch } from "react-router-dom";
+import React, {useState} from 'react'
+import { HashRouter, Route, Switch } from "react-router-dom"
 
 import LayoutHeader from '../layout/header'
 import LayoutFooter from '../layout/footer'
@@ -7,6 +7,7 @@ import PokemonList from './pokemon-list/'
 import PokemonDetail from './pokemon-detail/'
 import MyPokemonList from './my-pokemon-list/'
 import Page404 from './404/'
+import Break from '../components/break'
 
 import { MENU } from '../config/index'
 
@@ -21,6 +22,7 @@ export const TitleContext = React.createContext({
 function PokemonApp() {
   const [title, setTitle] = useState(defaultTitle)
   const [titleBefore, settitleBefore] = useState(defaultTitle)
+  const isDetail = title === "Pokemon Detail"
 
   return (
     <HashRouter>
@@ -53,6 +55,7 @@ function PokemonApp() {
           </Switch>
         </div>
         <LayoutFooter />
+        <Break height={isDetail ? 112 : 50} />
       </TitleContext.Provider>
     </HashRouter>
   )

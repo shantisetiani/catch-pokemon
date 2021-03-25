@@ -1,16 +1,18 @@
 import React, { useEffect, useContext } from 'react'
-import { NavLink, HashRouter } from "react-router-dom";
+import { NavLink, HashRouter } from "react-router-dom"
 import { Layout, Menu, Dropdown } from 'antd'
-import { MenuOutlined } from '@ant-design/icons';
+import { MenuOutlined } from '@ant-design/icons'
 
 import { MENU } from '../config/index'
-import logo from '../assets/pokemon-logo.png';
+import logo from '../assets/pokemon-logo.png'
 import { TitleContext } from '../pages/index'
+import { Tabs } from '../components/styled/general'
 
 
 function LayoutHeader() {
   const titleContext = useContext(TitleContext);
   const pageTitle = titleContext.title
+  const isDetail = pageTitle === "Pokemon Detail"
 
   // Hanlde header menu on scroll
   useEffect(() => {
@@ -35,10 +37,6 @@ function LayoutHeader() {
   const menu = (
     <Menu id="menu">
       <Menu.Item>
-        <img src={logo} className="header-menu-logo" alt="logo" />
-      </Menu.Item>
-      <Menu.Divider className="header-menu-divider" />
-      <Menu.Item>
         <NavLink to={MENU.HOME}>Pokemon List</NavLink>
       </Menu.Item>
       <Menu.Item>
@@ -50,27 +48,31 @@ function LayoutHeader() {
   return (
     <div>
       <Layout.Header id="header">
-        <HashRouter>
-          <Dropdown overlay={menu} trigger={['click']}>
-            <a href="/" className="ant-dropdown-link" onClick={e => e.preventDefault()}>
-              <MenuOutlined />
-            </a>
-          </Dropdown>
-        </HashRouter>
+        { !isDetail &&
+          <HashRouter>
+            <Dropdown overlay={menu} trigger={['click']}>
+              <a href="/" className="ant-dropdown-link" onClick={e => e.preventDefault()}>
+                <MenuOutlined />
+              </a>
+            </Dropdown>
+          </HashRouter>
+        }
         <div className="header-title">
           <span>{pageTitle}</span>
         </div>
         <img src={logo} className="header-logo" alt="logo" />
       </Layout.Header>
-      <div className="tabs">
-        <div className={`tabpane${pageTitle === "Pokemon List" ? " active" : ""}`}>
-          <h3><NavLink to={MENU.HOME}>Pokemon List</NavLink></h3>
-        </div>
-        <div className="tabpane-divider"></div>
-        <div className={`tabpane${pageTitle === "My Pokemon List" ? " active" : ""}`}>
-          <h3><NavLink to={MENU.MY_POKEMON_LIST}>My Pokemon List</NavLink></h3>
-        </div>
-      </div>
+      { !isDetail &&
+        <Tabs>
+          <div className={`tabpane${pageTitle === "Pokemon List" ? " active" : ""}`}>
+            <h3><NavLink to={MENU.HOME}>Pokemon List</NavLink></h3>
+          </div>
+          <div className="tabpane-divider"></div>
+          <div className={`tabpane${pageTitle === "My Pokemon List" ? " active" : ""}`}>
+            <h3><NavLink to={MENU.MY_POKEMON_LIST}>My Pokemon List</NavLink></h3>
+          </div>
+        </Tabs>
+      }
     </div>
   )
 }

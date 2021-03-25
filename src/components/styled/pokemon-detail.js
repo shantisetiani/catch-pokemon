@@ -1,9 +1,11 @@
 import styled from "@emotion/styled"
-
-const totalFontSize = '18px'
-const black = '#000000'
-const red = '#e21212'
-const borderColor = '#dbe0e4'
+import {
+    totalFontSize,
+    black,
+    red,
+    borderColor,
+    boxShadowColor
+} from './constants'
 
 
 export const PokemonImageSection = styled.span`
@@ -33,10 +35,10 @@ export const ButtonContainer = styled.div`
     bottom: 0;
     background-color: #FFF;
     width: 100%;
-    box-shadow: 0 0 5px 1px #8a8a8a;
+    box-shadow: 0 0 5px 1px ${boxShadowColor};
     padding: 20px 10px;
 
-    @media (min-width: 925px) {
+    @media (min-width: 993px) {
         width: 30%;
         right: 15px;
         bottom: 15%;
@@ -53,7 +55,7 @@ export const TotalSection = styled.div`
     width: 100%;
     color: ${black};
 
-    @media (min-width: 925px) {
+    @media (min-width: 993px) {
         margin-bottom: 30px;
     }
 `;
