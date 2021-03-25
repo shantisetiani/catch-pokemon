@@ -69,6 +69,7 @@ function PokemonList(props) {
         }
     }
 
+    // Function for Pagination to go to another page
     const goTo = async (to) => {
         let lastPage = Math.floor(data.count / LIMIT)
         if(data.count % LIMIT > 0) {
@@ -89,6 +90,7 @@ function PokemonList(props) {
             await setPage(to)
             setOffset(to*LIMIT-LIMIT)
         }
+        // Push the page to url
         history.push(`?page=${to}`)
     }
 

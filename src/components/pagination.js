@@ -13,6 +13,9 @@ function TablePagination(props) {
             <Break height={20} />
             <StyledPagination
                 showQuickJumper
+                showLessItems
+                showSizeChanger={false}
+                responsive
                 current={ props.page }
                 total={ props.totalData }
                 onChange={ e => props.goTo(e) }

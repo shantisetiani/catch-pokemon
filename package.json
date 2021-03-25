@@ -4,25 +4,25 @@
   "private": true,
   "homepage": "https://catch-pokemon-app-neon.vercel.app/",
   "dependencies": {
-    "@apollo/client": "^3.3.12",
+    "@apollo/client": "^3.3.13",
     "@emotion/core": "^11.0.0",
     "@emotion/react": "^11.1.5",
     "@emotion/styled": "^11.1.5",
     "@testing-library/jest-dom": "^4.2.4",
-    "@testing-library/react": "^9.3.2",
-    "@testing-library/react-hooks": "^3.2.1",
+    "@testing-library/react": "^9.5.0",
+    "@testing-library/react-hooks": "^3.7.0",
     "@testing-library/user-event": "^7.1.2",
-    "antd": "^4.0.0",
+    "antd": "^4.14.1",
     "axios": "^0.19.2",
     "graphql": "^15.5.0",
     "local-storage": "^2.0.0",
-    "node-sass": "^4.13.1",
-    "react": "^16.13.0",
-    "react-dom": "^16.13.0",
-    "react-redux": "^7.2.0",
-    "react-router-dom": "^5.1.2",
+    "node-sass": "^4.14.1",
+    "react": "^16.14.0",
+    "react-dom": "^16.14.0",
+    "react-redux": "^7.2.3",
+    "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.0",
-    "react-test-renderer": "^16.13.0",
+    "react-test-renderer": "^16.14.0",
     "redux": "^4.0.5",
     "redux-persist": "^6.0.0"
   },
@@ -30,9 +30,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -48,8 +46,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "devDependencies": {
-    "gh-pages": "^2.2.0"
   }
 }

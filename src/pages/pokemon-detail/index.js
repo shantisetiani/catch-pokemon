@@ -11,6 +11,7 @@ import Pokeball from '../../assets/pokeball.gif'
 import NoImage from '../../assets/pokemon/no-image.jpg'
 
 import Break from '../../components/break'
+import LabelValue from '../../components/label-value'
 import { LinkText } from '../../components/styled/general'
 import {
     PokemonImageSection,
@@ -24,16 +25,6 @@ import {
     ErrorMessage
 } from "../../components/styled/pokemon-detail";
 import { TitleContext } from '../index'
-
-
-const LabelValue = ({ span, lable, value }) => {
-    return (
-        <Col span={ span } className="" style={{ marginBottom: 5 }}>
-            <h5 style={{ textTransform: 'uppercase', color: 'rgba(0,0,0,0.25)' }}>{ lable }</h5>
-            <p style={{ textTransform: 'capitalize' }}>{ value }</p>
-        </Col>
-    )
-}
 
 function PokemonDetail() {
     const state = useSelector(state => state)
@@ -65,6 +56,7 @@ function PokemonDetail() {
     }, [])
 
     let timeout;
+    // Check if the nickname not duplicate while typing
     const checkNickname = (input) => {
         setButtonDisabled(true)
         if (timeout) {
@@ -93,8 +85,8 @@ function PokemonDetail() {
     }
 
     const savePokemon = () => {
-        // input a nickname for caught pokemon and add to MyPokemonList
         if(nickname !== "") {
+            // Add the caught pokemon to MyPokemonList
             const myPokemonList = [{
                 pokemonName: data.name,
                 nickname: nickname,
@@ -102,6 +94,7 @@ function PokemonDetail() {
             }]
             dispatch(storeMyPokemonList(myPokemonList))
             
+            // Set totalOwned of the caught pokemon
             let totalOwned = state.totalOwned
 
             if(!totalOwned[data.name]) {
@@ -194,9 +187,9 @@ function PokemonDetail() {
                                 </PokemonImageSection>
                             </Col>
                             <Col xs={{ span: 24 }} md={{ span: 12 }} style={{ marginTop: "20px" }}> 
-                                <LabelValue lable="Pokemon Name" value={ data.name ? data.name : "-" } />
-                                <LabelValue lable="Height" value={ data.height ? `${data.height} inch` : "-" } />
-                                <LabelValue lable="Weight" value={ data.weight ? `${data.weight} gram` : "-" } />
+                                <LabelValue label="Pokemon Name" value={ data.name ? data.name : "-" } />
+                                <LabelValue label="Height" value={ data.height ? `${data.height} inch` : "-" } />
+                                <LabelValue label="Weight" value={ data.weight ? `${data.weight} gram` : "-" } />
                             </Col>
                         </Row>
                     </DetailContent>

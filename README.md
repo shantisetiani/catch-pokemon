@@ -26,3 +26,36 @@ You will also see any lint errors in the console.
 ### `npm test`
 
 Launches the test runner in the interactive watch mode.<br />
+
+====================================================================================
+
+## Folder Structure
+
+    .
+    ├── ...
+    ├── src                         # Source Files
+    │   ├── assets                  # All of the images used in this webApp
+    │   ├── components              # Reusable components
+    │   │   ├── styled              # Styled Components using @emotion
+    │   │   └── ...
+    │   ├── config                  # Configuration of url
+    │   ├── graphQl                 # Custom Hooks for getting data from API using GraphQl
+    │   ├── layout                  # Layout Components
+    │   ├── pages                   # All pages of the webApp
+    │   │   ├── 404                 # Default page if the url entered not match any page
+    │   │   ├── my-pokemon-list     # My Pokemon List page
+    │   │   │   ├── column.js       # Column for AntDesign's table
+    │   │   │   └── index.js        # Main component
+    │   │   ├── pokemon-detail      # Pokemon Detail page
+    │   │   ├── pokemon-list        # Pokemon List page
+    │   │   │   ├── column.js       # Column for AntDesign's table
+    │   │   │   └── index.js        # Main component
+    │   │   └── index.js            # Main component of this webApp, contains layout and all pages with Router
+    │   ├── redux                   # Redux files, contains action and reducer
+    │   ├── scss                    # SCSS files
+    │   ├── action.js               # Combination of all of the actions from redux folder
+    │   ├── index.js                # Main component of React App, render the ReactDOM
+    │   ├── index.scss              # Combination of all of the scss files 
+    │   ├── serviceWorker.js        # Service Worker for PWA
+    │   └── store.js                # Redux store, combine all reducers
+    └── ...

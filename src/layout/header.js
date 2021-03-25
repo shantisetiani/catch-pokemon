@@ -14,7 +14,7 @@ function LayoutHeader() {
   const pageTitle = titleContext.title
   const isDetail = pageTitle === "Pokemon Detail"
 
-  // Hanlde header menu on scroll
+  // Handle header menu on scroll
   useEffect(() => {
     const header = document.querySelector('#header')
     const headerTop = header.offsetTop;
