@@ -8,12 +8,12 @@ export const columns = (releasePokemon) => {
   return [
     {
       title: "Pokemon Name",
-      dataIndex: "name",
-      key: "name",
-      render: (text, record) => {
+      dataIndex: "pokemonName",
+      key: "pokemonName",
+      render: (text) => {
         return(
           <HashRouter>
-            <NavLink to={`${MENU.POKEMON}/detail/${record.pokemonId}`}><PokemonName>{ record.pokemonName }</PokemonName></NavLink>
+            <NavLink to={`${MENU.POKEMON}/detail/${text}`}><PokemonName>{ text }</PokemonName></NavLink>
           </HashRouter>
         )
       }
@@ -25,7 +25,19 @@ export const columns = (releasePokemon) => {
       render: (text, record) => {
         return(
           <span>
-            {record.nickname}
+            {text}
+          </span>
+        )
+      }
+    },
+    {
+      title: "Caught Time",
+      dataIndex: "caughtTime",
+      key: "caughtTime",
+      render: (text) => {
+        return(
+          <span>
+            {text}
           </span>
         )
       }

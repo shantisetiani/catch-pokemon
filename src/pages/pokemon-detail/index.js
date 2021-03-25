@@ -1,8 +1,9 @@
 import React, { useState, useEffect, useContext } from 'react'
 import { useHistory } from 'react-router'
+import { useSelector, useDispatch } from 'react-redux'
 import { Row, Col, Breadcrumb, Input, Button, Modal } from 'antd'
 import { LeftOutlined } from '@ant-design/icons'
-import { useSelector, useDispatch } from 'react-redux'
+import moment from 'moment'
 import { storeMyPokemonList, storeTotalOwnedPokemon } from '../../action.js'
 
 import { useGetPokemonDetail } from '../../graphQl/pokemon-detail'
@@ -65,6 +66,7 @@ function PokemonDetail() {
 
     let timeout;
     const checkNickname = (input) => {
+        setButtonDisabled(true)
         if (timeout) {
             clearTimeout(timeout);
             timeout = null;
@@ -87,16 +89,16 @@ function PokemonDetail() {
             setErrorMessage("")
         }
     
-        timeout = setTimeout(fake, 500);
+        timeout = setTimeout(fake, 300);
     }
 
     const savePokemon = () => {
         // input a nickname for caught pokemon and add to MyPokemonList
         if(nickname !== "") {
             const myPokemonList = [{
-                pokemonId: data.id,
                 pokemonName: data.name,
-                nickname: nickname
+                nickname: nickname,
+                caughtTime: moment().format('DD MMM YYYY hh:mm:ss')
             }]
             dispatch(storeMyPokemonList(myPokemonList))
             
