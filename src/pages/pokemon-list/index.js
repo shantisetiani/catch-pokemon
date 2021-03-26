@@ -25,7 +25,7 @@ export const GET_POKEMONS = gql`
   }
 `;
 
-function PokemonList(props) {
+function PokemonList() {
     const state = useSelector(state => state)
     const history = useHistory()
     const titleContext = useContext(TitleContext);
@@ -39,6 +39,8 @@ function PokemonList(props) {
       limit: LIMIT,
       offset: offset,
     }
+
+    // Get Pokemon List data using GraphQl
     const { loading, error, data } = useQuery(GET_POKEMONS, {
       variables: variables,
     });
@@ -110,7 +112,7 @@ function PokemonList(props) {
   
     return (
       <div className="pokemon-list">
-        <Table dataSource={pokemonList} rowKey={(record) => record.name} columns={columns()} pagination={false} />
+        <Table dataSource={pokemonList} rowKey={(record) => record.name} columns={columns()} pagination={false} dataTestId='table' />
         <TablePagination totalData={data?.pokemons?.count} page={page} goTo={goTo} />
       </div>
     )
