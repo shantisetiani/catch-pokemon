@@ -1,15 +1,15 @@
 import React, { useState, useEffect, useContext } from 'react'
 import { useHistory } from 'react-router'
 import { useSelector, useDispatch } from 'react-redux'
+import { gql, useQuery } from '@apollo/client';
 import { Row, Col, Breadcrumb, Input, Button, Modal } from 'antd'
 import { LeftOutlined } from '@ant-design/icons'
 import moment from 'moment'
 import { storeMyPokemonList, storeTotalOwnedPokemon } from '../../action.js'
 
-import { useGetPokemonDetail } from '../../graphQl/pokemon-detail'
-import Pokeball from '../../assets/pokeball.gif'
 import NoImage from '../../assets/pokemon/no-image.jpg'
 
+import Loading from '../../components/loading'
 import Break from '../../components/break'
 import LabelValue from '../../components/label-value'
 import { LinkText } from '../../components/styled/general'
@@ -26,13 +26,35 @@ import {
 } from "../../components/styled/pokemon-detail";
 import { TitleContext } from '../index'
 
+export const GET_POKEMON_DETAIL = gql`
+  query pokemon($name: String!) {
+    pokemon(name: $name) {
+      id
+      name
+      sprites {
+        front_default
+      }
+      moves {
+        move {
+          name
+        }
+      }
+      types {
+        type {
+          name
+        }
+      }
+    }
+  }
+`;
+
 function PokemonDetail() {
     const state = useSelector(state => state)
     const dispatch = useDispatch()
     const history = useHistory()
     const titleContext = useContext(TitleContext);
 
-    const [loading, setLoading] = useState(false)
+    const [catchLoading, setCatchLoading] = useState(false)
     const [nickname, setNickname] = useState("")
     const [buttonDisabled, setButtonDisabled] = useState(true)
     const [modalVisible, setModalVisible] = useState(false)
@@ -41,8 +63,10 @@ function PokemonDetail() {
     const url = window.location.hash.split('/')
     const pokemonName = url[url.length-1] !== "" ? url[url.length-1] : url[url.length-2]
 
-    // Get Pokemon Detail data from GraphQl
-    const data = useGetPokemonDetail(pokemonName)
+    // Get Pokemon Detail data using GraphQl
+    const { loading, error, data: result } = useQuery(GET_POKEMON_DETAIL, {
+        variables: {name: pokemonName},
+    });
 
     // Set Page Title
     useEffect(() => {
@@ -112,7 +136,7 @@ function PokemonDetail() {
   
     // Function when "Catch Pokemon!" button clicked
     const catchPokemon = () => {
-        setLoading(true)
+        setCatchLoading(true)
 
         setTimeout(() => {
             var randNum = Math.random();
@@ -132,7 +156,7 @@ function PokemonDetail() {
                     okText: 'OK'
                 });
             }
-            setLoading(false)
+            setCatchLoading(false)
         }, 2000);
     }
     
@@ -153,13 +177,11 @@ function PokemonDetail() {
             <Button type="primary" onClick={catchPokemon}>Catch Pokemon!</Button>
         </ButtonContainer>
     )
+  
+    if (loading || catchLoading) return <Loading />
+    if (error) return `Error! ${error.message}`
 
-    // Loading animation
-    if(loading) return (
-        <div className="loading">
-            <img src={Pokeball} className="loading-img" alt="loading" />
-        </div>
-    )
+    const data = result.pokemon
 
     return (
         <div className="pokemon-detail">
@@ -251,7 +273,6 @@ function PokemonDetail() {
                     <Button
                         key="submit"
                         type="primary"
-                        loading={loading}
                         onClick={savePokemon}
                         disabled={buttonDisabled}
                         className={buttonDisabled && "btn-disabled"}
