@@ -5,6 +5,8 @@
   "homepage": "https://catch-pokemon-app-neon.vercel.app/",
   "dependencies": {
     "@apollo/client": "^3.3.13",
+    "@apollo/react-hooks": "^4.0.0",
+    "@apollo/react-testing": "^4.0.0",
     "@emotion/core": "^11.0.0",
     "@emotion/react": "^11.1.5",
     "@emotion/styled": "^11.1.5",
