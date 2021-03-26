@@ -61,7 +61,7 @@ function MyPokemonList(id) {
 
     return (
         <div className="my-pokemon-list">
-            <Table dataSource={data} rowKey={(record) => record.pokemonName} columns={columns(releasePokemon)} />
+            <Table dataSource={data} rowKey={(record) => record.caughtTime} columns={columns(releasePokemon)} />
         </div>
     )
 }
