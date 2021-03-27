@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import { HashRouter, Route, Switch } from "react-router-dom"
+import { Route, Switch } from "react-router-dom"
 
 import LayoutHeader from '../layout/header'
 import LayoutFooter from '../layout/footer'
@@ -25,39 +25,37 @@ function PokemonApp() {
   const isDetail = title === "Pokemon Detail"
 
   return (
-    <HashRouter>
-      <TitleContext.Provider
-        value={{
-          title: title,
-          titleBefore: titleBefore,
-          changeTitle: (newTitle) => {
-            settitleBefore(title)
-            setTitle(newTitle)
-          }
-        }}
-      >
-        <LayoutHeader />
-        <div className="content">
-          <Switch>
-            <Route exact
-              path={MENU.HOME}
-              component={PokemonList}
-            />
-            <Route exact
-              path={`${MENU.POKEMON}/detail/:name`}
-              component={PokemonDetail}
-            />
-            <Route exact
-              path={MENU.MY_POKEMON_LIST}
-              component={ MyPokemonList }
-            />
-            <Route component={ Page404 } />
-          </Switch>
-        </div>
-        <LayoutFooter />
-        <Break height={isDetail ? 112 : 50} />
-      </TitleContext.Provider>
-    </HashRouter>
+    <TitleContext.Provider
+      value={{
+        title: title,
+        titleBefore: titleBefore,
+        changeTitle: (newTitle) => {
+          settitleBefore(title)
+          setTitle(newTitle)
+        }
+      }}
+    >
+      <LayoutHeader />
+      <div className="content">
+        <Switch>
+          <Route exact
+            path={MENU.HOME}
+            component={PokemonList}
+          />
+          <Route exact
+            path={`${MENU.POKEMON}/detail/:name`}
+            component={PokemonDetail}
+          />
+          <Route exact
+            path={MENU.MY_POKEMON_LIST}
+            component={ MyPokemonList }
+          />
+          <Route component={ Page404 } />
+        </Switch>
+      </div>
+      <LayoutFooter />
+      <Break height={isDetail ? 112 : 50} />
+    </TitleContext.Provider>
   )
 }
 

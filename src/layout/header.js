@@ -1,5 +1,5 @@
 import React, { useEffect, useContext } from 'react'
-import { NavLink, HashRouter } from "react-router-dom"
+import { NavLink } from "react-router-dom"
 import { Layout, Menu, Dropdown } from 'antd'
 import { MenuOutlined } from '@ant-design/icons'
 
@@ -49,13 +49,11 @@ function LayoutHeader() {
     <div>
       <Layout.Header id="header">
         { !isDetail &&
-          <HashRouter>
-            <Dropdown overlay={menu} trigger={['click']}>
-              <a href="/" className="ant-dropdown-link" onClick={e => e.preventDefault()}>
-                <MenuOutlined />
-              </a>
-            </Dropdown>
-          </HashRouter>
+          <Dropdown overlay={menu} trigger={['click']}>
+            <a href="/" className="ant-dropdown-link" onClick={e => e.preventDefault()}>
+              <MenuOutlined />
+            </a>
+          </Dropdown>
         }
         <div className="header-title">
           <span data-testid="header-title">{pageTitle}</span>

@@ -1,5 +1,5 @@
 import React from 'react'
-import { NavLink, HashRouter } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { MENU } from '../../config/index'
 import { PokemonName } from '../../components/styled/general'
 
@@ -11,9 +11,7 @@ export const columns = () => {
       key: "name",
       render: (text) => {
         return(
-          <HashRouter>
-            <NavLink to={`${MENU.POKEMON}/detail/${text}`}><PokemonName>{ text }</PokemonName></NavLink>
-          </HashRouter>
+          <NavLink to={`${MENU.POKEMON}/detail/${text}`}><PokemonName>{ text }</PokemonName></NavLink>
         )
       }
     },
