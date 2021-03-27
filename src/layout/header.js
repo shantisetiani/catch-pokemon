@@ -58,7 +58,7 @@ function LayoutHeader() {
           </HashRouter>
         }
         <div className="header-title">
-          <span>{pageTitle}</span>
+          <span data-testid="header-title">{pageTitle}</span>
         </div>
         <img src={logo} className="header-logo" alt="logo" />
       </Layout.Header>
@@ -68,7 +68,7 @@ function LayoutHeader() {
             <h3><NavLink to={MENU.HOME}>Pokemon List</NavLink></h3>
           </div>
           <div className="tabpane-divider"></div>
-          <div className={`tabpane${pageTitle === "My Pokemon List" ? " active" : ""}`}>
+          <div className={`tabpane${pageTitle === "My Pokemon List" ? " active" : ""}`} data-testid="nav-my-pokemon-list">
             <h3><NavLink to={MENU.MY_POKEMON_LIST}>My Pokemon List</NavLink></h3>
           </div>
         </Tabs>

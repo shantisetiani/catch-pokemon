@@ -112,7 +112,7 @@ function PokemonList() {
   
     return (
       <div className="pokemon-list">
-        <Table dataSource={pokemonList} rowKey={(record) => record.name} columns={columns()} pagination={false} dataTestId='table' />
+        <Table dataSource={pokemonList} rowKey={(record) => record.name} columns={columns()} pagination={false} />
         <TablePagination totalData={data?.pokemons?.count} page={page} goTo={goTo} />
       </div>
     )

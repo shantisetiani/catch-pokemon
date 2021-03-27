@@ -72,7 +72,7 @@ describe('Pokemon List', () => {
     },
   ];
 
-  it('Should show loading UI while loading', async () => {
+  it('Should show loading UI while loading', () => {
       const component = TestRenderer.create(
           <MockedProvider mocks={mocks} addTypename={false}>
               <Provider store={store}>

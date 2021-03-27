@@ -6,7 +6,7 @@ import { columns } from './column'
 import { TitleContext } from '../index'
 
 
-function MyPokemonList(id) {
+function MyPokemonList() {
     const state = useSelector(state => state)
     const data = state.myPokemonList
     const dispatch = useDispatch()
