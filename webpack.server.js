@@ -29,9 +29,14 @@ module.exports = {
         use: ['style-loader', 'css-loader', 'sass-loader'],
       },
       {
-          test: /\.(png|jpg|svg|gif|ico)?$/,
-          use: 'file-loader'
+        test: /\.(png|jpg|svg|gif|ico)?$/,
+        use: 'file-loader'
       },
+      {
+        test: /\.(graphql|gql)$/,
+        loader: 'graphql-tag/loader',
+        exclude: /node_modules/,
+     }
     ]
   }
 };

@@ -7,11 +7,11 @@ import express from 'express'
 import ReactDOMServer from 'react-dom/server'
 import { StaticRouter } from 'react-router-dom'
 import { Provider } from 'react-redux'
-import { PersistGate } from 'redux-persist/integration/react'
+// import { PersistGate } from 'redux-persist/integration/react'
 import fetch from 'cross-fetch'
 import { ApolloClient, createHttpLink, InMemoryCache, ApolloProvider } from '@apollo/client'
 import { getDataFromTree } from "@apollo/client/react/ssr"
-import { store, persistor } from '../src/store'
+import { store } from '../src/store'
 
 import PokemonApp from '../src/pages/index'
 
@@ -50,14 +50,29 @@ app.use((req, res) => {
     const App = (
         <ApolloProvider client={client}>
             <Provider store={store}>
-                <PersistGate loading={null} persistor={persistor}>
+                {/* <PersistGate loading={null} persistor={persistor}> */}
                     <StaticRouter location={req.url} context={context}>
                         <PokemonApp />
                     </StaticRouter>
-                </PersistGate>
+                {/* </PersistGate> */}
             </Provider>
         </ApolloProvider>
     );
+    /* const indexFile = path.resolve('./public/index.html');
+    fs.readFile(indexFile, 'utf8', (err, data) => {
+      if (err) {
+        console.error('Something went wrong:', err);
+        return res.status(500).send('Oops, better luck next time!');
+      }
+  
+      if (context.status === 404) {
+        res.status(404);
+      }
+  
+      return res.send(
+        data.replace('<div id="root"></div>', `<div id="root">${app}</div>`)
+      );
+    }); */
 
     getDataFromTree(App).then((content) => {
         const initialState = client.extract();

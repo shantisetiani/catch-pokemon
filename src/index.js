@@ -2,7 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { HashRouter } from "react-router-dom"
 import { Provider } from 'react-redux'
-import { PersistGate } from 'redux-persist/integration/react'
+// import { PersistGate } from 'redux-persist/integration/react'
 import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client'
 import * as serviceWorker from './serviceWorker'
 import { store, persistor } from './store'
@@ -21,11 +21,11 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <Provider store={store}>
-        <PersistGate loading={null} persistor={persistor}>
+        {/* <PersistGate loading={null} persistor={persistor}> */}
           <HashRouter>
             <PokemonApp />
           </HashRouter>
-        </PersistGate>
+        {/* </PersistGate> */}
       </Provider>
     </ApolloProvider>
   );
