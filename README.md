@@ -18,7 +18,7 @@ In the project directory, you can run:
 ### `npm start`
 
 Runs the app in the development mode.<br />
-Open [http://localhost:3000/catch-pokemon](http://localhost:3000/catch-pokemon) to view it in the browser.
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 The page will reload if you make edits.<br />
 You will also see any lint errors in the console.
@@ -26,22 +26,24 @@ You will also see any lint errors in the console.
 ### `npm test`
 
 Launches the test runner in the interactive watch mode.<br />
+<br /><br />
 
-====================================================================================
+---
 
 ## Folder Structure
 
     .
     ├── ...
     ├── src                         # Source Files
+    │   ├── __tests__               # Testing files for actions and reducers
     │   ├── assets                  # All of the images used in this webApp
     │   ├── components              # Reusable components
     │   │   ├── styled              # Styled Components using @emotion
     │   │   └── ...
     │   ├── config                  # Configuration of url
-    │   ├── graphQl                 # Custom Hooks for getting data from API using GraphQl
     │   ├── layout                  # Layout Components
     │   ├── pages                   # All pages of the webApp
+    │   │   ├── __tests__           # Testing files for pages
     │   │   ├── 404                 # Default page if the url entered not match any page
     │   │   ├── my-pokemon-list     # My Pokemon List page
     │   │   │   ├── column.js       # Column for AntDesign's table
@@ -57,5 +59,6 @@ Launches the test runner in the interactive watch mode.<br />
     │   ├── index.js                # Main component of React App, render the ReactDOM
     │   ├── index.scss              # Combination of all of the scss files 
     │   ├── serviceWorker.js        # Service Worker for PWA
+    │   ├── setupTests.js           # Setup for testing purpose
     │   └── store.js                # Redux store, combine all reducers
     └── ...
