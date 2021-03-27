@@ -48,7 +48,7 @@ export const GET_POKEMON_DETAIL = gql`
   }
 `;
 
-function PokemonDetail() {
+function PokemonDetail(props) {
     const state = useSelector(state => state)
     const dispatch = useDispatch()
     const history = useHistory()
@@ -59,6 +59,7 @@ function PokemonDetail() {
     const [buttonDisabled, setButtonDisabled] = useState(true)
     const [modalVisible, setModalVisible] = useState(false)
     const [errorMessage, setErrorMessage] = useState("")
+    const [location, setLocation] = useState()
     
     const url = window.location.hash.split('/')
     const pokemonName = url[url.length-1] !== "" ? url[url.length-1] : url[url.length-2]
@@ -67,9 +68,10 @@ function PokemonDetail() {
     const { loading, error, data: result } = useQuery(GET_POKEMON_DETAIL, {
         variables: {name: pokemonName},
     });
-
+    
     // Set Page Title
     useEffect(() => {
+        setLocation(history.location.state)
         titleContext.changeTitle("Pokemon Detail")
         // eslint-disable-next-line 
     }, [])
@@ -78,6 +80,34 @@ function PokemonDetail() {
     useEffect(() => {
         window.scrollTo(0, 0)
     }, [])
+
+    const data = result?.pokemon
+  
+    // Function when "Catch Pokemon!" button clicked
+    const catchPokemon = () => {
+        setCatchLoading(true)
+
+        setTimeout(() => {
+            var randNum = Math.random();
+      
+            if (randNum < 0.5){
+                setModalVisible(true)
+            }else{
+                Modal.warning({
+                    title: (
+                        <h3><span className="modal-header">{data.name}</span> fled!</h3>
+                    ),
+                    content: (
+                        <div>
+                            Better luck next time...
+                        </div>
+                    ),
+                    okText: 'OK'
+                });
+            }
+            setCatchLoading(false)
+        }, 2000);
+    }
 
     let timeout;
     // Check if the nickname not duplicate while typing
@@ -133,31 +163,13 @@ function PokemonDetail() {
             setModalVisible(false)
         }
     }
-  
-    // Function when "Catch Pokemon!" button clicked
-    const catchPokemon = () => {
-        setCatchLoading(true)
-
-        setTimeout(() => {
-            var randNum = Math.random();
-      
-            if (randNum < 0.5){
-                setModalVisible(true)
-            }else{
-                Modal.warning({
-                    title: (
-                        <h3><span className="modal-header">{data.name}</span> fled!</h3>
-                    ),
-                    content: (
-                        <div>
-                            Better luck next time...
-                        </div>
-                    ),
-                    okText: 'OK'
-                });
-            }
-            setCatchLoading(false)
-        }, 2000);
+    
+    const back = () => {
+        if(location === undefined) {
+            history.push('/')
+        }else {
+            history.goBack()
+        }
     }
     
     const NoImageComponent = () => (
@@ -181,14 +193,12 @@ function PokemonDetail() {
     if (loading || catchLoading) return <Loading />
     if (error) return `Error! ${error.message}`
 
-    const data = result.pokemon
-
     return (
         <div className="pokemon-detail">
             <Breadcrumb>
                 <Breadcrumb.Item>
                     <LeftOutlined />
-                    <LinkText onClick={() => history.goBack()} id="breadcrumb">{titleContext.titleBefore}</LinkText>
+                    <LinkText onClick={back} id="breadcrumb">{titleContext.titleBefore}</LinkText>
                 </Breadcrumb.Item>
                 <Breadcrumb.Item>
                     <span>Pokemon Detail</span>
