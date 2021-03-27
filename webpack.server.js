@@ -14,7 +14,24 @@ module.exports = {
       {
         test: /\.js$/,
         use: 'babel-loader'
-      }
+      },
+      {
+          test: /\.mjs$/,
+          include: /node_modules/,
+          type: 'javascript/auto',
+      },
+      {
+          test: /\.css$/,
+          use: ['style-loader', 'css-loader'],
+      },
+      {
+        test: /\.scss$/,
+        use: ['style-loader', 'css-loader', 'sass-loader'],
+      },
+      {
+          test: /\.(png|jpg|svg|gif|ico)?$/,
+          use: 'file-loader'
+      },
     ]
   }
 };

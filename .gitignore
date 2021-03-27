@@ -1,6 +1,7 @@
 # dependencies
 /node_modules
 /build
+/server-build
 
 # misc
 .DS_Store
