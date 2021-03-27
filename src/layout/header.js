@@ -17,7 +17,7 @@ function LayoutHeader() {
   // Handle header menu on scroll
   useEffect(() => {
     const header = document.querySelector('#header')
-    const headerTop = header.offsetTop;
+    const headerTop = header.offsetHeight;
 
     function handleScroll() {
       if (window.scrollY > headerTop) {
