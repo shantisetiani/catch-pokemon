@@ -1,5 +1,6 @@
 import React, {useState} from 'react'
 import { Route, Switch } from "react-router-dom"
+import { Layout } from 'antd'
 
 import LayoutHeader from '../layout/header'
 import LayoutFooter from '../layout/footer'
@@ -36,7 +37,7 @@ function PokemonApp() {
       }}
     >
       <LayoutHeader />
-      <div className="content">
+      <Layout.Content>
         <Switch>
           <Route exact
             path={MENU.HOME}
@@ -52,7 +53,7 @@ function PokemonApp() {
           />
           <Route component={ Page404 } />
         </Switch>
-      </div>
+      </Layout.Content>
       <LayoutFooter />
       <Break height={isDetail ? 112 : 50} />
     </TitleContext.Provider>
